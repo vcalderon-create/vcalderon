@@ -1,0 +1,21 @@
+const int potPin = 34;
+const int ledPin = 2;
+
+void setup() {
+  Serial.begin(115200); // Inicializamos el monitor serial para las alertas
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  int potValue = analogRead(potPin); // Lectura de 0 a 4095
+  
+  // Modificación: Alerta si supera el 80% (4095 * 0.8 = 3276)
+  if (potValue >= 3276) {
+    Serial.print("¡Alerta de Máximo Voltaje! Valor actual: ");
+    Serial.println(potValue);
+  }
+
+  int brightness = map(potValue, 0, 4095, 0, 255); // Conversión a 8 bits para PWM
+  analogWrite(ledPin, brightness);
+  delay(100); // Aumentado ligeramente para no saturar el monitor serial con mensajes
+}
