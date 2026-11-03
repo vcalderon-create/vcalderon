@@ -1,0 +1,26 @@
+/*
+Project: Blink Configurable (ESP32)
+Description: Fa parpellejar un LED connectat al pin 23 amb temps configurables.
+*/
+
+// Definim el pin on està connectat el LED
+const int LED_PIN = 23;
+
+// VARIABLES CONFIGURABLES: Temps en mil·lisegons (1000 ms = 1 segon)
+const int TEMPS_ENCESA = 1500;  // Modifica aquest valor per al temps que està encès
+const int TEMPS_APAGAT = 500;   // Modifica aquest valor per al temps que està apagat
+
+// La funció setup() s'executa un cop quan la placa arrenca
+void setup() {
+  // Configurem el pin del LED com una SORTIDA (OUTPUT)
+  pinMode(LED_PIN, OUTPUT);
+}
+
+// La funció loop() s'executa contínuament
+void loop() {
+  digitalWrite(LED_PIN, HIGH); // Envia 3.3V al pin (encén el LED)
+  delay(TEMPS_ENCESA);         // Espera el temps configurat d'encesa
+  
+  digitalWrite(LED_PIN, LOW);  // Envia 0V al pin (apaga el LED)
+  delay(TEMPS_APAGAT);         // Espera el temps configurat d'apagat
+}
