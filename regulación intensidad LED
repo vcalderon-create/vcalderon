@@ -1,0 +1,13 @@
+const int potPin = 34;
+const int ledPin = 2;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  int potValue = analogRead(potPin);
+  int brightness = map(potValue, 0, 4095, 0, 255); // Conversión a 8 bits para PWM
+  analogWrite(ledPin, brightness);
+  delay(10);
+}
